@@ -114,7 +114,6 @@ class FeedForward(nn.Module):
     
 
 
-
 class Block(nn.Module):
 
     def __init__(self,n_embd,n_head):
