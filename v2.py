@@ -85,7 +85,7 @@ class MultiHeadAttention(nn.Module):
         return torch.cat([h(x) for h in self.heads],dim=-1)
 
 
-class BigramLanguageModel(nn.Module):
+class GPTLanguageModel(nn.Module):
     def __init__(self):
         super().__init__()
         self.token_embedding_table=nn.Embedding(vocab_size,n_embd)
@@ -122,7 +122,7 @@ class BigramLanguageModel(nn.Module):
             idx=torch.cat((idx,idx_next),dim=1)
         return idx
     
-model =BigramLanguageModel()
+model =GPTLanguageModel()
 m=model.to(device)
 
 optimizer=torch.optim.AdamW(model.parameters(),lr=learning_rate)
