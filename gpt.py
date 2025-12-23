@@ -72,7 +72,7 @@ class Head(nn.Module):
     def forward(self,x):
         B,T,C=x.shape
         k=self.key(x) # (B, T, hs)
-        q=self.key(x) # (B, T, hs)
+        q=self.query(x) # (B, T, hs)
 
         wei=q@k.transpose(-2,-1)*k.shape[-1]**-0.5 # (B, T, hs) @ (B, hs, T) -> (B, T, T)
         wei=wei.masked_fill(self.tril[:T,:T]==0,float('-inf'))
